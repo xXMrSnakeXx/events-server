@@ -1,9 +1,7 @@
 import express from "express";
 import { getEvents } from "../controllers/events/index.js";
-import { addUser, getUsers } from "../controllers/users/index.js";
+import { ctrlWrapper } from "../helpers/ctrlWrapper.js";
 
-export const router = express.Router();
+export const eventsRouter = express.Router();
 
-router.get("/", getEvents);
-router.post("/:id", addUser);
-router.get("/:id", getUsers);
+eventsRouter.get("/", ctrlWrapper(getEvents));
